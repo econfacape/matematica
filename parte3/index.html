@@ -2019,32 +2019,112 @@ se ter uma solução <span class="math inline">\(X \neq 0\)</span>, a
 inversa da equação característica <span class="math inline">\((A-
 \lambda I)\)</span> não deve existir e, para isto, o seu determinante
 precisa ser igual a zero. Assim, pode-se entender <span class="math inline">\(\lambda\)</span> (raízes características) como os
-valores que zeram o determinante da equação característica.</p>
+valores que zeram o determinante da equação característica <span class="math inline">\(|A- \lambda I|=0\)</span>.</p>
 <p>Os vetores característicos não são únicos, devendo ser normalizados.
 Para cada raiz característica existe um vetor característico que é
 encontrado resolvendo a expressão <span class="math inline">\((A-\lambda_i I)X_i=0\)</span>.</p>
-<p>As raízes características possuem um conjunto de propriedades:</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(tr(A) = \sum_{i=1}^{p}
-\lambda_i\)</span>;</li>
-<li><span class="math inline">\(det(A) = \Pi_{i=1}^{p}\)</span>. Se
+<p>Considere:</p>
+<p><span class="math display">\[
+\mathbf{A}=\left[\begin{array}{cc}
+                 1 &amp;  2 \\
+                 4 &amp;  3
+                 \end{array} \right]; \lambda I= \lambda
+\left[\begin{array}{cc}
+                 1 &amp;  0 \\
+                 0 &amp;  1
+                 \end{array} \right]
+\]</span> <span class="math display">\[
+|A- \lambda I| = \left[\begin{array}{cc}
+                 1 &amp;  2 \\
+                 4 &amp;  3
+                 \end{array} \right] - \left[\begin{array}{cc}
+                 \lambda &amp;  0 \\
+                 0 &amp;  \lambda
+                 \end{array} \right] = \left[\begin{array}{cc}
+                 1-\lambda &amp;  2 \\
+                 4 &amp;  3-\lambda
+                 \end{array} \right]
+\]</span> o determinante é igual a <span class="math inline">\((1-\lambda)(3-\lambda)-8=0\)</span>. A resolução
+é</p>
+<p><span class="math display">\[
+3-\lambda-3\lambda+\lambda^2-8=0
+\]</span></p>
+<p><span class="math display">\[
+\lambda^2-4\lambda-5=0
+\]</span></p>
+<p><span class="math display">\[
+\lambda = \frac{4 \pm \sqrt{36}}{2}; \lambda_1=-1; \lambda_2=5
+\]</span> Para encontrar os vetores característicos, a primeira coisa a
+fazer é ordenar de forma decrescente as raízes características. Para
+cada raiz característica, encontra-se um vetor <span class="math inline">\(X_i\)</span> definido por <span class="math inline">\((A- \lambda I)X_i=0\)</span>.</p>
+<p>Para <span class="math inline">\(\lambda_1=-1\)</span></p>
+<p><span class="math display">\[
+\left[\begin{array}{cc}
+                 1 &amp;  2 \\
+                 4 &amp;  3
+                 \end{array} \right] - \left[\begin{array}{cc}
+                 -1 &amp;  0 \\
+                 0 &amp;  -1
+                 \end{array} \right]
+\left[\begin{array}{c}
+                 x_1  \\
+                 x_2
+                 \end{array} \right] = \left[\begin{array}{cc}
+                 2 &amp;  2 \\
+                 4 &amp;  4
+                 \end{array} \right] \left[\begin{array}{c}
+                 x_1  \\
+                 x_2
+                 \end{array} \right]
+\]</span> <span class="math display">\[
+\left[\begin{array}{c}
+                 2x_1+2x_2 \\
+                 4x_1+4x_2
+                 \end{array} \right] \left[\begin{array}{c}
+                 0  \\
+                 0
+                 \end{array} \right]
+\]</span> É necessário definir o valor de <span class="math inline">\(x_2\)</span> para encontrar o de <span class="math inline">\(x_1\)</span> ou vice-versa, <span class="math inline">\(x_1=-x_2\)</span> ou <span class="math inline">\(x_2=-x_1\)</span>. Sendo <span class="math inline">\(x_2=1\)</span>, <span class="math inline">\(x_1=-1\)</span></p>
+<p>Para <span class="math inline">\(\lambda_2=5\)</span></p>
+<p><span class="math display">\[
+\left[\begin{array}{cc}
+                 1 &amp;  2 \\
+                 4 &amp;  3
+                 \end{array} \right] - \left[\begin{array}{cc}
+                 5 &amp;  0 \\
+                 0 &amp;  5
+                 \end{array} \right]
+\left[\begin{array}{c}
+                 x_1  \\
+                 x_2
+                 \end{array} \right] = \left[\begin{array}{cc}
+                 -4 &amp;  2 \\
+                 4 &amp;  -2
+                 \end{array} \right] \left[\begin{array}{c}
+                 x_1  \\
+                 x_2
+                 \end{array} \right]
+\]</span> <span class="math display">\[
+\left[\begin{array}{c}
+                 -4x_1+2x_2 \\
+                 4x_1-2x_2
+                 \end{array} \right] \left[\begin{array}{c}
+                 0  \\
+                 0
+                 \end{array} \right]
+\]</span> É necessário definir o valor de <span class="math inline">\(x_2\)</span> para encontrar o de <span class="math inline">\(x_1\)</span> ou vice-versa, <span class="math inline">\(x_1=-1/2x_2\)</span> ou <span class="math inline">\(x_2=2x_1\)</span>. Sendo <span class="math inline">\(x_2=2\)</span>, <span class="math inline">\(x_1=1\)</span>.</p>
+<p>As raízes características possuem um conjunto de propriedades: 1)
+<span class="math inline">\(tr(A) = \sum_{i=1}^{p} \lambda_i\)</span>;
+2) <span class="math inline">\(det(A) = \Pi_{i=1}^{p}\)</span>. Se
 alguma raiz característica for zero, o determinante de A é zero e a
-matriz não possui inversa;</li>
-<li>Para uma matriz diagonal, as raízes são os elementos da diagonal
-principal;</li>
-<li>Para uma matriz triangular, as raízes são os elementos da diagonal
-principal;</li>
-<li>Raízes de A são iguais as de <span class="math inline">\(A&#39;\)</span>;</li>
-<li>As raízes de <span class="math inline">\(A^{-1}\)</span> são iguais
-a <span class="math inline">\(1/ \lambda_i\)</span>, mas os vetores
-característicos são os mesmos;</li>
-<li>Se A é ortogonal, <span class="math inline">\(\lambda_i=1\)</span>
-ou <span class="math inline">\(-1\)</span>;</li>
-<li>Se A é uma matriz idempotente, <span class="math inline">\(\lambda_i=1\)</span> ou <span class="math inline">\(0\)</span>;</li>
-<li>Raízes características de matrizes simétrica são números reais;</li>
-<li>Os vetores característicos de matrizes simétricas são ortogonais, ou
-seja, não correlacionados.</li>
-</ol>
+matriz não possui inversa; 3) Para uma matriz diagonal, as raízes são os
+elementos da diagonal principal; 4) Para uma matriz triangular, as
+raízes são os elementos da diagonal principal; 5) Raízes de A são iguais
+as de <span class="math inline">\(A&#39;\)</span>; 6) As raízes de <span class="math inline">\(A^{-1}\)</span> são iguais a <span class="math inline">\(1/ \lambda_i\)</span>, mas os vetores
+característicos são os mesmos; 7) Se A é ortogonal, <span class="math inline">\(\lambda_i=1\)</span> ou <span class="math inline">\(-1\)</span>; 8) Se A é uma matriz idempotente,
+<span class="math inline">\(\lambda_i=1\)</span> ou <span class="math inline">\(0\)</span>; 9) Raízes características de matrizes
+simétrica são números reais; 10) Os vetores característicos de matrizes
+simétricas são ortogonais, ou seja, não correlacionados.</p>
 </div>
 </div>
 
