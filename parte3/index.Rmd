@@ -1,0 +1,475 @@
+---
+title: "Aula Álgebra Linear"
+author: "João Ricardo F. de Lima"
+date: "`r format(Sys.time(), '%d de %B de %Y.')`"
+output: 
+    html_document:
+        theme: flatly
+        number_sections: yes
+        keep_tex: yes
+        highlight: textmate
+#        includes: 
+#          in_header: "header.html"
+        toc: yes
+        toc_float:
+          collapsed: yes
+          smooth_scroll: yes 
+    bookdown::html_document2: default
+---
+
+<br>
+
+# Revisão de Álgebra Matricial
+
+## Definição e tipologia de matrizes
+
+<br>
+
+Uma **matriz** é um arranjo retangular de números, denotado por letras maiúsculas em negrito.
+
+Já um **vetor** é um conjunto de números ordenados em uma linha ou coluna, denotado em letras minúsculas, também em negrito.
+
+Tipos comuns de matrizes em econometria:
+  
+I) Matrizes simétricas
+
+$$
+\mathbf{S}=\left[\begin{array}{ccccc}
+                 1 & 0 & 0 & 0 & 0 \\ 
+                 0 & 2 & 0 & 0 & 0 \\ 
+                 0 & 0 & 3 & 0 & 0 \\ 
+                 0 & 0 & 0 & 4 & 0 \\
+                 0 & 0 & 0 & 0 & 5 \\
+                 \end{array} \right]
+$$
+II) Matrizes diagonais
+
+$$
+\mathbf{D}=\left[\begin{array}{ccccc}
+                 3 & 0 & 0 & 0 & 0 \\ 
+                 0 & 13 & 0 & 0 & 0 \\ 
+                 0 & 0 & 26 & 0 & 0 \\ 
+                 0 & 0 & 0 & 14 & 0 \\
+                 0 & 0 & 0 & 0 & 9 \\
+                 \end{array} \right]
+$$
+III) Matriz escalar
+
+$$
+\mathbf{E}=\left[\begin{array}{c}
+                 3
+                 \end{array} \right]
+$$
+IV) Matriz identidade
+
+$$
+\mathbf{I}=\left[\begin{array}{ccccc}
+                 1 & 0 & 0 & 0 & 0 \\ 
+                 0 & 1 & 0 & 0 & 0 \\ 
+                 0 & 0 & 1 & 0 & 0 \\ 
+                 0 & 0 & 0 & 1 & 0 \\
+                 0 & 0 & 0 & 0 & 1 \\
+                 \end{array} \right]
+$$
+V) Matriz triangular (superior e inferior)
+
+$$
+\mathbf{I}=\left[\begin{array}{ccccc}
+                 1 & 3 & 6 & 10 & 20 \\ 
+                 0 & 31 & 60 & 4 & 18 \\ 
+                 0 & 0 & 9 & 10 & 110 \\ 
+                 0 & 0 & 0 & 4 & 77 \\
+                 0 & 0 & 0 & 0 & 3 \\
+                 \end{array} \right]
+$$
+
+<br>
+
+## Manipulação algébrica de matrizes
+
+<br>
+
+a) Igualdade: **A=B** $\iff a_{ik}=b_{ik}$;
+
+$$
+\mathbf{A}=\left[\begin{array}{ccc}
+                 1 & 3 & 6 \\ 
+                 0 & 31 & 60 \\ 
+                 0 & 0 & 9 \\
+                 \end{array} \right]=\mathbf{B}=\left[\begin{array}{ccc}
+                 1 & 3 & 6 \\ 
+                 0 & 31 & 60 \\ 
+                 0 & 0 & 9 \\
+                 \end{array} \right]
+$$
+
+b) Transposição: **B=A'** $\iff b_{ik}=a_{ki}$
+
+$$
+\mathbf{A}=\left[\begin{array}{ccc}
+                 1 & 3 & 6 \\ 
+                 0 & 31 & 60 \\ 
+                 0 & 0 & 9 \\
+                 \end{array} \right]
+$$
+$$
+\mathbf{B}=\mathbf{A'}=\left[\begin{array}{ccc}
+                              1 & 0 & 0 \\ 
+                              3 & 31 & 0 \\ 
+                              6 & 60 & 9 \\
+                            \end{array} \right]
+$$
+		
+Se **A** é simétrica, então **A=A'**
+
+$$
+\mathbf{A}=\left[\begin{array}{ccc}
+                 1 & 3 & 6 \\ 
+                 3 & 31 & 60 \\ 
+                 6 & 60 & 9 \\
+                 \end{array} \right]
+$$
+
+
+$$
+\mathbf{A'}=\mathbf{A}=\left[\begin{array}{ccc}
+                            1 & 3 & 6 \\ 
+                            3 & 31 & 60 \\ 
+                            6 & 60 & 9 \\
+                            \end{array} \right]
+$$
+
+c) Adição de matrizes: **C=A+B** $\rightarrow [a_{ik}+b_{ik}]$
+
+$$
+\left[\begin{array}{ccc}
+                 1 & 3 & 6 \\ 
+                 0 & 31 & 60 \\ 
+                 0 & 0 & 9 \\
+                 \end{array} \right]+\left[\begin{array}{ccc}
+                 2 & 4 & 7 \\ 
+                 1 & 13 & 0 \\ 
+                 4 & 20 & 19 \\
+                 \end{array} \right]=\mathbf{C}\left[\begin{array}{ccc}
+                 3 & 7 & 13 \\ 
+                 1 & 44 & 60 \\ 
+                 4 & 20 & 28 \\
+                 \end{array} \right]
+$$
+
+d) Matrizes são multiplicadas usando o **produto interno** o qual, para dois vetores **a** e **b** é dado por:
+
+$$
+{a'b}=a_1b_1+a_2b_2+\ldots+a_nb_n
+$$
+
+Assim, para uma matriz **A** de ordem $n\times K$ e uma matriz **B** de ordem $K \times M$, a matriz produto **C** é uma matriz $n \times M$:
+
+$$
+C=AB\rightarrow c_{ik}=\mathbf{a_i'b_k}
+$$
+
+### Exemplo de multiplicação com matrizes quadradas
+
+$$
+\left[\begin{array}{cc}
+                 1 & 3 \\ 
+                 0 & 31 \\ 
+                 \end{array} \right]x\left[\begin{array}{cc}
+                 2 & 4  \\ 
+                 1 & 13 \\ 
+                 \end{array} \right]=\mathbf{C}=\left[\begin{array}{cc}
+                  (1x2)+(3x1) & (1x4)+(3x13) \\ 
+                  (0x2)+(31x1) & (0x4)+(31x13)\\ 
+                 \end{array} \right]
+$$
+$$
+\mathbf{C}=\left[\begin{array}{cc}
+                  5 & 43 \\ 
+                  31 & 403\\ 
+                 \end{array} \right]
+$$
+<br>
+
+### Exemplo de multiplicação com matrizes com dimensões diferentes
+
+<br>
+
+$$
+\mathbf{A=}\left[\begin{array}{cc}
+                 1 & 3 \\ 
+                 0 & 31 \\ 
+                 15 & 4 \\ 
+                 \end{array} \right]x\mathbf{B}=\left[\begin{array}{cc}
+                 2 & 4  \\ 
+                 1 & 13 \\ 
+                 \end{array} \right]=\mathbf{C}=\left[\begin{array}{ccc}
+                 (1x2)+(3x1) & (1x4)+(3x13)   \\ 
+                 (0x2)+(31x1)& (0x4)+(31x13) \\ 
+                 (15x2)+(4x1) & (15x4)+(4x13)\\ 
+                 \end{array} \right]
+$$
+
+$$
+\mathbf{C}=\left[\begin{array}{ccc}
+                 5 & 43  \\ 
+                 31& 403 \\ 
+                 34 & 99 \\ 
+                 \end{array} \right]
+$$
+A matriz A possui dimensão 3x2 e a matriz B possui dimensão 2x2. Como o número de colunas da matriz A é igual ao número de linhas da matriz B, a multiplicação pode ser feita. O resultado será uma matriz C com dimensão 3x2.
+
+Não seria possível multiplicar a matriz B pela matriz A, pois o número de colunas da matriz B não é igual ao número de linhas da matriz A. 
+
+
+<br>
+
+## Soma de Valores
+
+<br>
+
+Seja **i** um vetor coluna de $1's$ e **x** um vetor coluna qualquer. Então:
+
+$$
+\sum\limits_{i=1}^{n}x_i=x_1+x_2+\ldots+x_n=\mathbf{i'x}
+$$
+
+$$
+\mathbf{x}=\left[\begin{array}{c}
+                 5  \\ 
+                 31 \\ 
+                 34 \\ 
+                 \end{array} \right]
+$$
+
+$$
+\mathbf{i}=\left[\begin{array}{c}
+                 1  \\ 
+                 1 \\ 
+                 1 \\ 
+                 \end{array} \right]
+$$
+$$
+\mathbf{i'}=\left[\begin{array}{ccc}
+                 1 &  1 & 1 \\ 
+                 \end{array} \right] x \mathbf{x}=\left[\begin{array}{c}
+                 5  \\ 
+                 31 \\ 
+                 34 \\ 
+                 \end{array} \right]=\sum\limits_{i=1}^{n}x_i=70
+$$
+É possível multiplicar pois a matriz $i'$ tem dimensão 1x3 e a matriz x tem dimensão 3x1. O número de colunas da matriz $i'$ é igual ao número de linhas da matriz x. A matriz resultante possui o número de linhas de $i'$ e o número de colunas de x, ou seja, vai ser 1x1. 
+
+Se todos os elementos em **x** são iguais a uma constante *a*, então 
+
+$\mathbf{x}=a\mathbf{i}$ e
+
+$$
+\sum\limits_{i=1}^{n}x_i=\mathbf{i'}(a\mathbf{i})=a(\mathbf{i'i})=na
+$$
+
+Se $a=1/n$, então obtem-se a média aritmética de *x*:
+
+$$
+\bar{x}=\frac{1}{n}\sum\limits_{i=1}^{n}x_i=\frac{1}{n}\mathbf{i'x}
+$$
+	Logo, tem-se um resultado útil para derivações futuras no curso:
+	
+$$
+\sum\limits_{i=1}^{n}x_i=\mathbf{i'x}=n\bar{x}
+$$
+<br>
+
+## Soma de valores ao quadrado
+
+<br>
+
+A soma dos quadrados dos elementos de **x**, e de **x** por **y** é:
+
+$$
+\sum\limits_{i=1}^{n}x_i^2=\mathbf{x'x}\qquad \sum\limits_{i=1}^{n} x_iy_i=\mathbf{x'y}
+$$
+
+E, pela definição de multiplicação de matrizes:
+
+$$
+[\mathbf{X'X}]_{kl}=[\mathbf{x_k'x_l}]
+$$
+
+é o produto interno da $k-$ésima e $l-$ésima colunas de **X**.
+
+<br>
+
+## (In)dependência linear e posto de uma matriz
+
+<br>
+
+Um conjunto de vetores é **linearmente dependente** se qualquer um dos vetores no conjunto pode ser expresso como uma combinação linear dos demais.
+
+Um conjunto de vetores é **linearmente independente** se e somente se a única solução para $\alpha_1\mathbf{a_1}+\alpha_2\mathbf{a_2}+\ldots+\alpha_k\mathbf{a_k}=0$ é $\alpha_1=\alpha_2=\ldots=\alpha_k=0$.
+
+O **posto** (ou, do inglês, **rank**) de uma matriz equivale ao número de linhas (ou colunas) linearmente independentes.
+
+De modo equivalente, o posto de uma matriz **A** $p \times q$ é igual ao valor $r$ para o qual existe uma submatriz de **A** de tamanho $r \times r$ que possui determinante não nulo.
+
+<br>
+
+## Determinante de uma matriz
+
+<br>
+
+O **determinante** de uma matriz quadrada é uma função dos elementos da matriz. Def.: O **determinante** de uma matriz é não-nulo se e somente se a mesma possui posto cheio.
+
+Para uma matriz diagonal **D**:
+
+$$
+\mathbf{D}=\left[\begin{array}{ccccc}
+                 d_1 & 0 & 0 & \ldots & 0 \\ 
+                 0 & d_2 & 0 & \ldots & 0 \\ 
+                 &  &  & \ddots &  \\ 
+                 0 & 0 & 0 & \ldots & d_K
+                 \end{array} \right]
+$$
+O determinante é dado pelo produtório dos termos da diagonal principal:
+
+$$
+|\mathbf{D}|=\prod\limits_{k=1}^{K}d_k
+$$
+
+Para uma matriz $2 \times 2$, o cálculo do determinante é dado por:
+
+$$
+\begin{array}{|cc|}
+a & c \\ 
+b & d
+\end{array} =ad-bc
+$$
+
+Observe que o determinante é uma função de todos os elementos da matriz.
+
+Para matrizes com dimensões superiores a 2, utilizamos a expansão por cofatores:
+
+$$
+|\mathbf{A}|=\sum\limits_{k=1}^{K}a_{ik}(-1)^{i+k}|\mathbf{A}_{ik}|,\qquad k=1,\ldots,K.
+$$
+
+<br>
+
+## Menor e Cofator
+
+<br>
+
+Se a i-ésima linha e a j-ésima coluna de uma matriz A de origem N x N são excluídas, o determinante da submatriz resultante é chamado de o **menor** do elemento $a_{ij}$ (o elemento na interseção da i-ésima linha e a j-ésima coluna) e é denotado por $|M_{ij}|$.
+
+O cofator do elemento $a_{ij}$ de uma matriz A de origem N x N, denotado por $c_{ij}$, é definido como
+
+$$
+c_{ij}=(-1)^{i+j}|M_{ij}|
+$$
+
+um cofator é um menor sinalizado, com sinal positivo se i + j for par e negativo
+se i + j for ímpar.
+
+Substituindo os elementos $a_{ij}$ de uma matriz A pelos seus cofatores, se obtém uma matriz conhecida como **matriz de cofator** de A, denotada por (cof A).
+
+A **matriz adjunta**, escrita como (adj A), é a transposta da matriz de cofator; $(adj$ $A) = (cof$ $A)'$.
+
+<br>
+
+## Matrizes Inversas
+
+<br>
+
+Uma matriz quadrada **A** $p \times p$ possui inversa se existe uma matriz **B** $p \times p$ tal que $\mathbf{AB=BA=I}$;
+
+Tal matriz **B** é denominada **inversa** de **A** e denotada $\mathbf{A^{-1}}$, com as seguintes propriedades:
+
+$$
+(\mathbf{AB})^{-1}=\mathbf{B^{-1}A^{-1}}; \quad \mathbf{A^{-1}A}=\mathbf{AA^{-1}=I}
+$$
+
+$$
+(\mathbf{A'})^{-1}=(\mathbf{A}^{-1})'; \quad (\mathbf{A}^{-1})^{-1}=\mathbf{A}
+$$
+Se A é quadrada e não singular ($|A| \neq 0$), a sua inversa $A^-1$ pode ser encontrada da seguinte forma:
+
+$$
+\mathbf{A}^{-1}=\frac{1}{\mathbf{|A|}}(adj \quad \mathbf{A})
+$$
+
+Os passos envolvidos no cálculo são os seguintes:
+
+1. Descubra o determinante de A. Se não for zero, execute o passo 2.
+2. Substitua cada elemento ai j de A por seu cofator para obter a matriz de cofator.
+3. Transponha a matriz de cofator para obter a matriz adjunta.
+4. Divida cada elemento da matriz adjunta por |A|.
+
+
+**Matrizes singulares** são matrizes que não possuem inversa.
+
+<br>
+
+## Matrizes particionadas
+
+<br>
+
+Em algumas situações é útil agrupar os elementos de uma matriz em **submatrizes**. Seja:
+
+$$
+\mathbf{A}=\left[\begin{array}{cc|c}
+                 1 & 4 & 5 \\ 
+                 2 & 9 & 3 \\ 
+                 \hline
+                 8 & 9 & 6
+                 \end{array} \right]=\left[\begin{array}{cc}
+                                           \mathbf{A_{11}} &  \mathbf{A_{12}} \\ 
+                                           \mathbf{A_{21}} &  \mathbf{A_{22}}
+                                           \end{array} \right]
+$$
+Um caso especial é a matriz bloco-diagonal:
+
+
+$$
+\mathbf{A}=\left[\begin{array}{cc}
+                 \mathbf{A_{11}} &  0 \\ 
+                 0 &  \mathbf{A_{22}}
+                 \end{array} \right]
+$$
+<br>
+
+## Raízes e Vetores Característicos
+
+<br>
+
+Sobre raízes e vetores característicos, uma matriz quadrada A tem raízes características $\lambda_i$ e vetores característicos $X_i$ dados pela seguinte relação $AX=\lambda X$. Uma matriz $p_xp$ tem *p* raízes e *p* vetores característicos e a relação pode ser escrita como $AX_i=\lambda_i X_i$ o que, intituitivamente, significa que existem constantes $\lambda_i$ e vetores $X_i$, tais que a multiplicação da matriz pelo vetor é igual à multiplicação do vetor por uma constante. 
+
+As raízes e vetores característicos são encontrados a partir de 
+
+$$
+AX=\lambda X
+$$
+
+$$
+AX - \lambda X= 0
+$$
+$$
+(A- \lambda I)X= 0
+$$
+
+sendo que a equação é verdadeira para qualquer $\lambda$ se $X=0$, mas esta solução não interessa. Para se ter uma solução $X \neq 0$, a inversa da equação característica $(A- \lambda I)$ não deve existir e, para isto, o seu determinante precisa ser igual a zero. Assim, pode-se entender $\lambda$ (raízes características) como os valores que zeram o determinante da equação característica.
+
+Os vetores característicos não são únicos, devendo ser normalizados. Para cada raiz característica existe um vetor característico que é encontrado resolvendo a expressão $(A-\lambda_i I)X_i=0$. 
+
+As raízes características possuem um conjunto de propriedades: 
+
+1) $tr(A) =  \sum_{i=1}^{p} \lambda_i$;
+2) $det(A) = \Pi_{i=1}^{p}$. Se alguma raiz característica for zero, o determinante de A é zero e a matriz não possui inversa; 
+3) Para uma matriz diagonal, as raízes são os elementos da diagonal principal;
+4) Para uma matriz triangular, as raízes são os elementos da diagonal principal;
+5) Raízes de A são iguais as de $A'$;
+6) As raízes de $A^{-1}$ são iguais a $1/ \lambda_i$, mas os vetores característicos são os mesmos;
+7) Se A é ortogonal, $\lambda_i=1$ ou $-1$;
+8) Se A é uma matriz idempotente, $\lambda_i=1$ ou $0$;
+9) Raízes características de matrizes simétrica são números reais;
+10) Os vetores característicos de matrizes simétricas são ortogonais, ou seja, não
+correlacionados.
