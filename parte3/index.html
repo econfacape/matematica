@@ -1511,16 +1511,57 @@ border-radius: 0px;
 <div id="revisão-de-álgebra-matricial" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Revisão de Álgebra
 Matricial</h1>
-<div id="definição-e-tipologia-de-matrizes" class="section level2" number="1.1">
+<div id="definição-e-tipologia-de-vetores-e-matrizes" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Definição e tipologia
-de matrizes</h2>
+de vetores e matrizes</h2>
 <p><br></p>
+<p>Um <strong>vetor</strong> é um conjunto de números ordenados em uma
+linha ou coluna, denotado em letras minúsculas, também em negrito.
+Geometricamente um vetor é definido como um segmento de reta que liga a
+origem a um ponto no <span class="math inline">\(\Re^n\)</span>, com as
+coordenadas (x1, x2,…, xn ). Graficamente, o vetor pode ser demonstrado
+pela reta que parte da origem até um ponto A definido pelas coordenadas
+do vetor. O ângulo define a direção do vetor. Quanto mais variáveis,
+mais dimensões/eixos.</p>
+<p>O tamanho (comprimento, norma) de um vetor é definido pelo Teorema de
+Pitágoras.</p>
+<p><span class="math display">\[
+c^2 = a^2 + b^2
+\]</span></p>
+<p><span class="math display">\[
+c = \sqrt{(a^2 + b^2)} = ||X||
+\]</span></p>
+<p>em que <span class="math inline">\(||X||\)</span> representa a norma
+do vetor.</p>
+<p><strong>Vetor unitário</strong> é aquele que possui tamanho/normal
+igual a 1. Todo vetor normalizado possui tamanho igual a 1;</p>
+<p>O <strong>vetor normalizado</strong> é obtido pela divisão do vetor
+por seu tamanho, ou seja, dividem-se cada elemento pelo seu comprimento.
+Exemplo:</p>
+<p>Seja</p>
+<p><span class="math display">\[
+\mathbf{Z}=\left[\begin{array}{c}
+                 -1  \\
+                 2 \\
+                 -2 \\
+                 \end{array} \right]
+\]</span> então, <span class="math inline">\(||Z||\)</span> é</p>
+<p><span class="math display">\[
+||Z|| = \sqrt{(-1)^2 + 2^2 + (-2)^2} = \sqrt{1+4+4} = 3
+\]</span></p>
+<p>O vetor Z normalizado é <span class="math inline">\(w=1/3Z\)</span>,
+ou seja,</p>
+<p><span class="math display">\[
+\mathbf{W}=\left[\begin{array}{c}
+                 -1/3  \\
+                 2/3 \\
+                 -2/3 \\
+                 \end{array} \right]
+\]</span></p>
+<p>sendo fácil mostrar que a norma de W é igual a 1.</p>
 <p>Uma <strong>matriz</strong> é um arranjo retangular de números,
 denotado por letras maiúsculas em negrito.</p>
-<p>Já um <strong>vetor</strong> é um conjunto de números ordenados em
-uma linha ou coluna, denotado em letras minúsculas, também em
-negrito.</p>
-<p>Tipos comuns de matrizes em econometria:</p>
+<p>Tipos comuns de matrizes:</p>
 <ol style="list-style-type: upper-roman">
 <li>Matrizes simétricas</li>
 </ol>
@@ -1532,7 +1573,10 @@ negrito.</p>
                  0 &amp; 0 &amp; 0 &amp; 4 &amp; 0 \\
                  0 &amp; 0 &amp; 0 &amp; 0 &amp; 5 \\
                  \end{array} \right]
-\]</span> II) Matrizes diagonais</p>
+\]</span></p>
+<ol start="2" style="list-style-type: upper-roman">
+<li>Matrizes diagonais</li>
+</ol>
 <p><span class="math display">\[
 \mathbf{D}=\left[\begin{array}{ccccc}
                  3 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -1541,12 +1585,18 @@ negrito.</p>
                  0 &amp; 0 &amp; 0 &amp; 14 &amp; 0 \\
                  0 &amp; 0 &amp; 0 &amp; 0 &amp; 9 \\
                  \end{array} \right]
-\]</span> III) Matriz escalar</p>
+\]</span></p>
+<ol start="3" style="list-style-type: upper-roman">
+<li>Matriz escalar</li>
+</ol>
 <p><span class="math display">\[
 \mathbf{E}=\left[\begin{array}{c}
                  3
                  \end{array} \right]
-\]</span> IV) Matriz identidade</p>
+\]</span></p>
+<ol start="4" style="list-style-type: upper-roman">
+<li>Matriz identidade</li>
+</ol>
 <p><span class="math display">\[
 \mathbf{I}=\left[\begin{array}{ccccc}
                  1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -1555,7 +1605,10 @@ negrito.</p>
                  0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
                  0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
                  \end{array} \right]
-\]</span> V) Matriz triangular (superior e inferior)</p>
+\]</span></p>
+<ol start="22" style="list-style-type: upper-alpha">
+<li>Matriz triangular (superior e inferior)</li>
+</ol>
 <p><span class="math display">\[
 \mathbf{I}=\left[\begin{array}{ccccc}
                  1 &amp; 3 &amp; 6 &amp; 10 &amp; 20 \\
@@ -1637,9 +1690,9 @@ b_{ik}=a_{ki}\)</span></li>
                  \end{array} \right]
 \]</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>Matrizes são multiplicadas usando o <strong>produto interno</strong>
-o qual, para dois vetores <strong>a</strong> e <strong>b</strong> é dado
-por:</li>
+<li>Matrizes e vetores são multiplicadas usando o <strong>produto
+interno</strong> o qual, para dois vetores <strong>a</strong> e
+<strong>b</strong> é dado por:</li>
 </ol>
 <p><span class="math display">\[
 {a&#39;b}=a_1b_1+a_2b_2+\ldots+a_nb_n
@@ -1651,6 +1704,25 @@ produto <strong>C</strong> é uma matriz <span class="math inline">\(n
 <p><span class="math display">\[
 C=AB\rightarrow c_{ik}=\mathbf{a_i&#39;b_k}
 \]</span></p>
+<p>O produto interno de dois vetores X e Y é definido por <span class="math inline">\(X&#39;Y=Y&#39;X\)</span> e é sempre um
+escalar.</p>
+<p><span class="math display">\[
+\mathbf{X}=\left[\begin{array}{c}
+                 -1  \\
+                 5 \\
+                 2 \\
+                 -2 \\
+                 \end{array} \right] e
+\space  \mathbf{Y}=\left[\begin{array}{c}
+                 4  \\
+                 -3 \\
+                 20 \\
+                 1 \\
+                 \end{array} \right]
+\]</span> então, <span class="math inline">\(X&#39;Y=Y&#39;X=-21\)</span>.</p>
+<p>Quando o produto interno de dois vetores é zero, eles são ditos
+<strong>ortogonais</strong>, ou seja, não são correlacionados.
+Geometricamente, possuem um ângulo de <span class="math inline">\(90^o\)</span> entre eles.</p>
 <div id="exemplo-de-multiplicação-com-matrizes-quadradas" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Exemplo de
 multiplicação com matrizes quadradas</h3>
@@ -1778,9 +1850,16 @@ x_iy_i=\mathbf{x&#39;y}
 <h2><span class="header-section-number">1.5</span> (In)dependência
 linear e posto de uma matriz</h2>
 <p><br></p>
-<p>Um conjunto de vetores é <strong>linearmente dependente</strong> se
-qualquer um dos vetores no conjunto pode ser expresso como uma
-combinação linear dos demais.</p>
+<p>Um conjunto de vetores de mesma dimensão é <strong>linearmente
+dependentes</strong> se qualquer um dos vetores no conjunto pode ser
+expresso como uma combinação linear dos demais.</p>
+<p>De outra forma, um um conjunto de vetores serão <strong>linearmente
+dependentes</strong> se puderem ser escritos da seguinte forma, onde
+todas as constantes <strong>não são todas nulas</strong> (exemplo com
+três vetores <span class="math inline">\(v_1,v_2,v_3\)</span>):</p>
+<p><span class="math display">\[
+\alpha_1v_1+\alpha_2v_2+\alpha_3v_3=0
+\]</span></p>
 <p>Um conjunto de vetores é <strong>linearmente independente</strong> se
 e somente se a única solução para <span class="math inline">\(\alpha_1\mathbf{a_1}+\alpha_2\mathbf{a_2}+\ldots+\alpha_k\mathbf{a_k}=0\)</span>
 é <span class="math inline">\(\alpha_1=\alpha_2=\ldots=\alpha_k=0\)</span>.</p>
