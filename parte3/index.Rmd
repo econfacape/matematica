@@ -630,22 +630,50 @@ $$
 \left[\begin{array}{c}
                  -4x_1+2x_2 \\ 
                  4x_1-2x_2
-                 \end{array} \right] \left[\begin{array}{c}
+                 \end{array} \right] = \left[\begin{array}{c}
                  0  \\ 
                  0 
                  \end{array} \right] 
 $$
 É necessário definir o valor de $x_2$ para encontrar o de $x_1$ ou vice-versa, $x_1=-1/2x_2$  ou  $x_2=2x_1$. Sendo $x_2=2$, $x_1=1$.
 
-As raízes características possuem um conjunto de propriedades: 
+Matricialmente tem-se os dois vetores:
+
+$$
+\left[\begin{array}{cc}
+                 -1 & 1 \\ 
+                 1 & 2
+                 \end{array} \right]
+$$
+que podem ser normalizados para 
+
+$$
+\left[\begin{array}{cc}
+                 \frac{-1}{\sqrt{2}} & \frac{1}{\sqrt{5}} \\ 
+                 \frac{1}{\sqrt{2}} &  \frac{2}{\sqrt{5}}
+                 \end{array} \right]
+$$
+
+As raízes características possuem um conjunto de propriedades:
+
+
 1) $tr(A) =  \sum_{i=1}^{p} \lambda_i$;
+
 2) $det(A) = \Pi_{i=1}^{p}$. Se alguma raiz característica for zero, o determinante de A é zero e a matriz não possui inversa; 
+
 3) Para uma matriz diagonal, as raízes são os elementos da diagonal principal;
+
 4) Para uma matriz triangular, as raízes são os elementos da diagonal principal;
+
 5) Raízes de A são iguais as de $A'$;
+
 6) As raízes de $A^{-1}$ são iguais a $1/ \lambda_i$, mas os vetores característicos são os mesmos;
+
 7) Se A é ortogonal, $\lambda_i=1$ ou $-1$;
+
 8) Se A é uma matriz idempotente, $\lambda_i=1$ ou $0$;
+
 9) Raízes características de matrizes simétrica são números reais;
+
 10) Os vetores característicos de matrizes simétricas são ortogonais, ou seja, não
 correlacionados.
